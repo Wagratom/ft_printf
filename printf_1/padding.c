@@ -6,7 +6,7 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 16:20:57 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/06/23 00:56:33 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/06/24 21:34:28 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,3 @@ int	padding(const char *str, t_format *data)
 	data->numb_spaces *= signal_negative;
 	return (index);
 }
-

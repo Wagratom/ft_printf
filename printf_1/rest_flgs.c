@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   spaces.c                                           :+:      :+:    :+:   */
+/*   rest_flgs.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 18:38:35 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/06/23 21:30:52 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/06/24 22:30:46 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	padding_mod(const char *str, t_format *data)
 {
-	int index;
+	int	index;
 	int	signal_negative;
 
 	index = 0;
@@ -32,7 +32,7 @@ static int	padding_mod(const char *str, t_format *data)
 
 int	spaces(const char *str, t_format *data)
 {
-	int index;
+	int	index;
 
 	data->spaces = 1;
 	index = 0;
@@ -44,7 +44,7 @@ int	spaces(const char *str, t_format *data)
 
 int	zero(const char *str, t_format *data)
 {
-	int size;
+	int	size;
 
 	size = 1;
 	data->zero = 1;
@@ -54,7 +54,7 @@ int	zero(const char *str, t_format *data)
 	return (size);
 }
 
-int	hastag(const char *str, t_format *data)
+int	hashtag(const char *str, t_format *data)
 {
 	str++;
 	return ((data->hashtag = 1));
@@ -62,7 +62,7 @@ int	hastag(const char *str, t_format *data)
 
 int	sig_more(const char *str, t_format *data)
 {
-	int index;
+	int	index;
 
 	data->sig_more = 1;
 	index = 0;

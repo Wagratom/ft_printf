@@ -6,7 +6,7 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 15:20:23 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/06/23 18:54:15 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/06/24 21:34:08 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	numb_house(unsigned long int nbr, int base)
 {
 	if (nbr < (unsigned long int)base)
 		return (1);
-	return (numb_house(nbr/base, base) + 1);
+	return (numb_house(nbr / base, base) + 1);
 }
 
 char	*convert_hex(unsigned long int nbr, int flg)

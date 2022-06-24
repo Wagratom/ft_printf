@@ -6,21 +6,56 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 14:46:00 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/06/23 21:32:14 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/06/24 22:49:34 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	print_int_aux(long int nbr, t_format *data);
-
-static int numb_house_int(long int nbr)
+static int	numb_house_int(long int nbr)
 {
 	if (nbr < 0)
 		nbr = -nbr;
 	if (nbr < 10)
 		return (1);
-	return (numb_house_int(nbr/10) + 1);
+	return (numb_house_int(nbr / 10) + 1);
+}
+
+int	write_less(long int *nbr, int flg)
+{
+	if (flg == 1)
+		return (*nbr = -*nbr);
+	else if (flg == 2)
+	{
+		write(1, "-", 1);
+		*nbr = -*nbr;
+	}
+	return (1);
+}
+
+int	filter_data(long int *nbr, t_format *data)
+{
+	int	size;
+
+	size = 0;
+	if (data->spaces)
+	{
+		if (*nbr >= 0)
+			return (write(1, " ", 1));
+		return (write_less(nbr, 2));
+	}
+	if (data->sig_more)
+	{
+		if (*nbr >= 0)
+			return (write(1, "+", 1));
+		return (write_less(nbr, 2));
+	}
+	if (data->precision > 0)
+	{
+		size = print_zero((*nbr < 0), data->precision - numb_house_int(*nbr));
+		write_less(nbr, (*nbr < 0));
+	}
+	return (size);
 }
 
 int	print_int(int nbr, t_format *data)
@@ -43,43 +78,7 @@ int	print_int(int nbr, t_format *data)
 	return (size);
 }
 
-int filter_data(long int *nbr, t_format *data)
-{
-	int size;
-
-	size = 0;
-	if (data->spaces)
-	{
-		if (*nbr < 0)
-		{
-			size = write(1, "-", 1);
-			if (*nbr < 0)
-				*nbr = -*nbr;
-		}
-		else
-			size = write(1, " ", 1);	
-	}
-	if (data->sig_more)
-	{
-		if (*nbr < 0)
-		{
-			size = write(1, "-", 1);
-			if (*nbr < 0)
-				*nbr = -*nbr;
-		}
-		else
-			size = write(1, "+", 1);
-	}
-	if (data->precision > 0)
-	{
-		size = print_zero((*nbr < 0), data->precision - numb_house_int(*nbr));
-		if (*nbr < 0)
-			*nbr = -*nbr;
-	}
-	return (size);
-}
-
-static int	print_int_aux(long int nbr, t_format *data)
+int	print_int_aux(long int nbr, t_format *data)
 {
 	char		*result;
 	int			size;
