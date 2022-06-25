@@ -6,7 +6,7 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 04:51:27 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/06/24 22:29:59 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/06/24 23:36:33 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int		print_unsigned(unsigned int nbr, t_format *data);
 int		print_unsigned_aux(unsigned int nbr, t_format *data);
 
 //print a char formatted
-int		print_char(int c, int flg, t_format *data);
+int		print_char(int c, t_format *data);
 
 //print a str formatted
 int		print_str(char *str, t_format *data);

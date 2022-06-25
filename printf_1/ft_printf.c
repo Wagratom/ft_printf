@@ -6,7 +6,7 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 20:10:24 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/06/23 21:15:48 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/06/24 23:58:21 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ static int	verific_mandatory(const char *str)
 
 static int	swap(va_list ptr, int flg, t_format *data)
 {
-	if (flg == 1 || flg == 9)
-		return (print_char(va_arg(ptr, int), flg, data));
+	if (flg == 1)
+		return (print_char(va_arg(ptr, int), data));
 	else if (flg == 2)
 		return (print_str(va_arg(ptr, char *), data));
 	else if (flg == 3)
@@ -64,6 +64,8 @@ static int	swap(va_list ptr, int flg, t_format *data)
 		return (print_unsigned(va_arg(ptr, unsigned int), data));
 	else if (flg == 7 || flg == 8)
 		return (print_hex(va_arg(ptr, int), flg, data));
+	else if (flg == 9)
+		return (write(1, "%", 1));
 	return (1);
 }
 
